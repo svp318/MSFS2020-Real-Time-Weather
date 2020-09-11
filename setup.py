@@ -1,12 +1,12 @@
-import setuptools
+from setuptools import setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name='msfs-2020-real-time-weather',
     version='0.1',
-    packages=setuptools.find_packages(),
+    packages=['metar'],
     url='https://github.com/svp318/MSFS2020-Real-Time-Weather',
     license='',
     author='Simon Vega',

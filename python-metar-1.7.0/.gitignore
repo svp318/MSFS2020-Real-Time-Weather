@@ -1,8 +1,0 @@
-*.pyc
-*.swp
-.tox/
-htmlcov/
-.coverage
-/build/
-/dist/
-/metar.egg-info/

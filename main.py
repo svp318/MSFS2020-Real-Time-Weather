@@ -5,9 +5,19 @@ from msfs_xml import MsfsXML
 
 if __name__ == '__main__':
 
-    preset_file_location = os.getenv('APPDATA') + r'\Microsoft Flight Simulator\Weather\Presets\CustomSky.WPR'
+    # Set the airport ICAO code here
+    airport_icao_code = 'KORD'
+
+    # This will use the test file in this folder.
+    # Set to false to use the file in the MSFS Presets folder.
+    using_test_file = True
+
+    if using_test_file:
+        preset_file_location = 'CustomSky.WPR'
+    else:
+        preset_file_location = os.getenv('APPDATA') + r'\Microsoft Flight Simulator\Weather\Presets\CustomSky.WPR'
     print(f'Looking for weather preset at {preset_file_location}')
-    airport = Airport('SEQM')
+    airport = Airport(airport_icao_code)
     weather_preset = None
 
     try:

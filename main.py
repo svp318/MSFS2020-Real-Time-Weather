@@ -5,7 +5,7 @@ from msfs_xml import MsfsXML
 
 if __name__ == '__main__':
 
-    # Set the airport ICAO code here
+    # Set the airport ICAO code here.
     airport_icao_code = 'KORD'
 
     # This will use the test file in this folder.

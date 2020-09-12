@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     # This will use the test file in this folder.
     # Set to false to use the file in the MSFS Presets folder.
-    using_test_file = True
+    using_test_file = False
 
     if using_test_file:
         preset_file_location = 'CustomSky.WPR'

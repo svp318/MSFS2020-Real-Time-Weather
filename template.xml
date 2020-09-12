@@ -8,31 +8,31 @@
         <LayeredImage>weather/presets/clear_sky_layer.png</LayeredImage>
         <IsAltitudeAMGL>True</IsAltitudeAMGL>
         <CloudLayer>
-            <CloudLayerDensity Value="0.149" Unit="(0 - 1)">
+            <CloudLayerDensity Value="0.202" Unit="(0 - 1)">
             </CloudLayerDensity>
-            <CloudLayerAltitudeBot Value="304.800" Unit="m">
+            <CloudLayerAltitudeBot Value="487.680" Unit="m">
             </CloudLayerAltitudeBot>
-            <CloudLayerAltitudeTop Value="3303.000" Unit="m">
+            <CloudLayerAltitudeTop Value="3817.000" Unit="m">
             </CloudLayerAltitudeTop>
             <CloudLayerScattering Value="1.000" Unit="(0 - 1)">
             </CloudLayerScattering>
         </CloudLayer>
         <CloudLayer>
-            <CloudLayerDensity Value="0.393" Unit="(0 - 1)">
+            <CloudLayerDensity Value="0.309" Unit="(0 - 1)">
             </CloudLayerDensity>
-            <CloudLayerAltitudeBot Value="853.440" Unit="m">
+            <CloudLayerAltitudeBot Value="548.640" Unit="m">
             </CloudLayerAltitudeBot>
-            <CloudLayerAltitudeTop Value="3122.000" Unit="m">
+            <CloudLayerAltitudeTop Value="7175.000" Unit="m">
             </CloudLayerAltitudeTop>
             <CloudLayerScattering Value="1.000" Unit="(0 - 1)">
             </CloudLayerScattering>
         </CloudLayer>
         <CloudLayer>
-            <CloudLayerDensity Value="0.000" Unit="(0 - 1)">
+            <CloudLayerDensity Value="0.838" Unit="(0 - 1)">
             </CloudLayerDensity>
-            <CloudLayerAltitudeBot Value="5000.000" Unit="m">
+            <CloudLayerAltitudeBot Value="9144.000" Unit="m">
             </CloudLayerAltitudeBot>
-            <CloudLayerAltitudeTop Value="5000.000" Unit="m">
+            <CloudLayerAltitudeTop Value="9425.000" Unit="m">
             </CloudLayerAltitudeTop>
             <CloudLayerScattering Value="1.000" Unit="(0 - 1)">
             </CloudLayerScattering>
@@ -40,14 +40,14 @@
         <WindLayer>
             <WindLayerAltitude Value="0.000" Unit="m">
             </WindLayerAltitude>
-            <WindLayerAngle Value="162.000" Unit="degrees">
+            <WindLayerAngle Value="230.0" Unit="degrees">
             </WindLayerAngle>
-            <WindLayerSpeed Value="1.0" Unit="knts">
+            <WindLayerSpeed Value="6.0" Unit="knts">
             </WindLayerSpeed>
         </WindLayer>
-        <MSLPressure Value="102100.000" Unit="pa">
+        <MSLPressure Value="101100.000" Unit="pa">
         </MSLPressure>
-        <MSLTemperature Value="291.964" Unit="k">
+        <MSLTemperature Value="303.28" Unit="k">
         </MSLTemperature>
         <AerosolDensity Value="1.000" Unit="m">
         </AerosolDensity>

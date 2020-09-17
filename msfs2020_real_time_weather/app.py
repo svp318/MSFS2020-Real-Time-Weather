@@ -33,6 +33,7 @@ class DialogGUI(QDialog):
         loadUi('msfs2020_real_time_weather/window.ui', self)
         self.Return = 0
 
+        self.header_info_label.setOpenExternalLinks(True)
         self.create_preset_button.clicked.connect(self.create_preset)
 
     def print_to_output(self, output_text):

@@ -19,7 +19,7 @@ I started seeing many people have felt my same frustration, so I decided to crea
 ### How it works
 ###### Microsoft Flight Simulator has the option to save custom weather presets. This program takes advantage of that and creates presets in the necessary folder to make them available in game. This is how:
 
-The program looks for the Microsoft Flight Simulator weather presets folder (currently the program only looks for it in the location "C:\Users\<username>\AppData\Roaming\Microsoft Flight Simulator\Weather\Presets").
+The program looks for the Microsoft Flight Simulator weather presets folder (currently the program only looks for it in the location "C:/Users/<username>/AppData/Roaming/Microsoft Flight Simulator/Weather/Presets").
 
 The user then inputs an ICAO airport code (_KORD, EDDF, etc._) or a complete METAR (_KORD 171751Z 03014KT 10SM FEW040 FEW250 20/08 A3016 RMK AO2 SLP212 T02000083 10200 20178 50003_).
 
@@ -30,7 +30,7 @@ The parsed METAR is then converted into a "WPR" file, which is in XML format, an
 If said WPR file doesn't exist, it is created. If it already exists, it is updated.
 
 ### How to use
-###### For now, this program only works if your Microsoft Flight Simulator weather presets folder is in the following location: C:\Users\<username>\AppData\Roaming\Microsoft Flight Simulator\Weather\Presets
+###### For now, this program only works if your Microsoft Flight Simulator weather presets folder is in the following location: C:/Users/<username>/AppData/Roaming/Microsoft Flight Simulator/Weather/Presets
 
 Close Microsoft Flight Simulator.
 

@@ -24,6 +24,26 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="header_info_label">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">margin-bottom: 10px</string>
+      </property>
+      <property name="text">
+       <string>To know how this tool works, and how to use it, &lt;a href=&quot;https://github.com/svp318/MSFS2020-Real-Time-Weather&quot;&gt;visit the repository.&lt;/a&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">

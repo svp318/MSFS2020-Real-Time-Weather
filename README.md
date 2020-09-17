@@ -53,4 +53,11 @@ Select the airport for the METAR you downloaded, pick your airplane and fly!
 - Cloud "thickness" (how tall they are) is determined on an algorithm that is too simple at this time, which means that an overcast sky might be so thin that you can still see the sky. Or that very high cirrus clouds might look more like cumulus. 
 - The program crashes if a wrong ICAO code or METAR is input. I need to work on error handling so this doesn't happen.
 
+### Acknowledgements
+
+- This definitely wouldn't have been possible without the awesome [python-metar] package.
+- The airport information database found in the file "aiports.dat" was obtained from [OpenFlights]
+
 [Releases]: https://github.com/svp318/MSFS2020-Real-Time-Weather/releases
+[python-metar]: https://github.com/python-metar/python-metar
+[OpenFlights]: https://openflights.org/data.html

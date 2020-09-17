@@ -1,3 +1,6 @@
+# Original Author: Simon Vega - 2020
+# Distributed under the terms of the GNU GPLv3 License.
+
 from setuptools import setup
 
 with open("README.md", "r") as fh:

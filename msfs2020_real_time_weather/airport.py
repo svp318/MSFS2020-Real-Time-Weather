@@ -45,7 +45,7 @@ class _Info:
     def _get_airport_info(self):
         airport_file_header = ('Airport ID', 'Name', 'City', 'Country', 'IATA', 'ICAO', 'Latitude',
                                'Longitude', 'Altitude', 'Timezone', 'DST', 'Tz database time zone', 'Type', 'Source')
-        with open('airports.dat', newline='', encoding='utf-8') as csvfile:
+        with open('msfs2020_real_time_weather/airports.dat', newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, airport_file_header)
             for row in reader:
                 if row['ICAO'] == self.station_id:

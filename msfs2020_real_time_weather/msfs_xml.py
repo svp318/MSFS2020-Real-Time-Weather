@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 class MsfsXML:
     def __init__(self, preset_file_location):
         self.preset_file_location = preset_file_location
-        self.template_file = 'template.xml'
+        self.template_file = 'msfs2020_real_time_weather/template.xml'
         self.tree = ET.parse(self.template_file)
         self.root = self.tree.getroot()
         self.weather_preset = self.root.find('WeatherPreset.Preset')

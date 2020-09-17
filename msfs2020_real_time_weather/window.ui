@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1095</width>
+    <height>556</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MSFS 2020 Real Time Weather</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>1051</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Enter ICAO ID or METAR</string>
+          </property>
+          <property name="margin">
+           <number>5</number>
+          </property>
+          <property name="buddy">
+           <cstring>id_input</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="id_input">
+          <property name="placeholderText">
+           <string>Example: 'KORD' or 'KORD 170451Z 01006KT 10SM BKN050 BKN060 21/16 A3005'</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item alignment="Qt::AlignRight">
+       <widget class="QPushButton" name="create_preset_button">
+        <property name="styleSheet">
+         <string notr="true">padding: 10px 20px 10px</string>
+        </property>
+        <property name="text">
+         <string>Create/Update Weather Preset</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Result:</string>
+      </property>
+      <property name="buddy">
+       <cstring>result_output_text_browser</cstring>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="result_output_text_browser"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

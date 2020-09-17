@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MSFS 2020 Real Time Weather</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>mrtw.ico</normaloff>mrtw.ico</iconset>
+  </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>

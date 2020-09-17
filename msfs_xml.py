@@ -20,6 +20,9 @@ class MsfsXML:
                 return wind_layer
         print('Ground wind layer not found.')
 
+    def _set_preset_name(self, station_id):
+        self.weather_preset.find('Name').text = station_id
+
     def _set_value(self, weather_preset_node, value):
         if value is not None:
             weather_preset_node.set('Value', value)
@@ -60,11 +63,21 @@ class MsfsXML:
     # TODO Lightning
 
     def set_real_weather(self, airport):
+        self._set_preset_name(airport.info.station_id)
         self._set_pressure(airport.weather.pressure)
         self._set_msl_temperature(airport.weather.msl_temperature)
         self._set_wind_dir(airport.weather.wind_dir)
         self._set_wind_speed(airport.weather.wind_speed)
         self._set_cloud_layers(airport.weather.cloud_layers)
 
-    def save_file(self):
-        self.tree.write(self.preset_file_location, encoding='UTF-8', xml_declaration=True)
+    def save_file(self, airport):
+        try:
+            self.tree.write(self.preset_file_location, encoding='UTF-8', xml_declaration=True)
+        except FileNotFoundError:
+            print(f'Error, could not create or update weather preset at {self.preset_file_location}.')
+        except Exception as exp:
+            print(exp)
+        else:
+            print(f'Weather preset successfully created at {self.preset_file_location}')
+            print('The following METAR was used to update it:')
+            print(airport.weather.code)

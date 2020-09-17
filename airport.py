@@ -8,10 +8,12 @@ class Airport:
     def __init__(self, icao_code_or_metar):
         # This is basically constructor overloading.
         if len(icao_code_or_metar) == 4:
+            print(f'Downloading latest METAR for airport: {icao_code_or_metar}')
             icao_code = icao_code_or_metar
             self.info = _Info(icao_code)
             self.weather = _Weather(icao_code, self.info.altitude)
         elif len(icao_code_or_metar) > 4:
+            print(f'Processing custom METAR: {icao_code_or_metar}')
             icao_code = icao_code_or_metar[:4]
             metar = icao_code_or_metar
             self.info = _Info(icao_code)
@@ -55,10 +57,16 @@ class _Weather:
     def __init__(self, station_id, station_altitude, specific_metar=None):
         self.station_id = station_id
         self.station_altitude = station_altitude
-        if specific_metar is None:
-            self.parsed_metar = Metar.Metar(self._download_metar())
+        try:
+            print('Parsing METAR.')
+            if specific_metar is None:
+                self.parsed_metar = Metar.Metar(self._download_metar())
+            else:
+                self.parsed_metar = Metar.Metar(specific_metar)
+        except Exception as exp:
+            print(exp)
         else:
-            self.parsed_metar = Metar.Metar(specific_metar)
+            print('Metar successfully parsed.')
         self.code = self._get_metar_code()
         self.pressure = self._get_pressure()
         self.msl_temperature = self._get_msl_temperature()
@@ -134,24 +142,29 @@ class _Weather:
             return exportable_cloud_layer
 
         def _get_cloud_layer_altitude_bot(parsed_cloud_layer, exportable_cloud_layer):
+            if parsed_cloud_layer[1] is None:
+                return exportable_cloud_layer
             parsed_cloud_layer_altitude_bot = f'{round(parsed_cloud_layer[1].value("M"), 3):.3f}'
             exportable_cloud_layer['CloudLayerAltitudeBot'] = parsed_cloud_layer_altitude_bot
             return exportable_cloud_layer
 
         def _get_cloud_layer_altitude_top(parsed_cloud_layer, exportable_cloud_layer):
+            if parsed_cloud_layer[1] is None:
+                return exportable_cloud_layer
             cloud_layer_altitude_bot = float(exportable_cloud_layer['CloudLayerAltitudeBot'])
             parsed_cloud_type = parsed_cloud_layer[2]
-            # From what I've gathered, clouds usually get thinner if their base is above 2000m AGL.
+            # From what I've gathered, clouds usually get thinner if their base is above 5000m AGL.
             # These cloud thickness values have not been properly tested yet.
-            if cloud_layer_altitude_bot < 2000:
+            if cloud_layer_altitude_bot < 5000:
                 if parsed_cloud_type == 'TCU':
-                    parsed_cloud_layer_altitude_top = random.randint(3000, 6000)
+                    parsed_cloud_layer_altitude_top = random.randint(2000, 3000)
                 elif parsed_cloud_type == 'CB':
-                    parsed_cloud_layer_altitude_top = random.randint(6000, 10000)
+                    parsed_cloud_layer_altitude_top = random.randint(3000, 6000)
                 else:
-                    parsed_cloud_layer_altitude_top = random.randint(1500, 3000)
+                    parsed_cloud_layer_altitude_top = random.randint(750, 1250)
             else:
-                parsed_cloud_layer_altitude_top = random.randint(1000, 2000)
+                # TODO this is too simple. should be proportionate to height
+                parsed_cloud_layer_altitude_top = random.randint(250, 750)
 
             exportable_cloud_layer['CloudLayerAltitudeTop'] = \
                 f'{round(cloud_layer_altitude_bot + parsed_cloud_layer_altitude_top):.3f}'

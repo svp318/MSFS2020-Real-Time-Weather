@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU GPLv3 License.
 
 import xml.etree.ElementTree as ET
+from .messages import Messages as M
 
 
-# TODO Get XML from a template file in the project directory
 # TODO Add an option to save a departure airport and a destination airport
 class MsfsXML:
     def __init__(self, preset_file_location):
@@ -21,7 +21,7 @@ class MsfsXML:
             wind_layer_altitude = float(wind_layer.find('WindLayerAltitude').attrib['Value'])
             if wind_layer_altitude == 0:
                 return wind_layer
-        print('Ground wind layer not found.')
+        M.send_message('Ground wind layer not found.')
 
     def _set_preset_name(self, station_id):
         self.weather_preset.find('Name').text = station_id
@@ -30,7 +30,7 @@ class MsfsXML:
         if value is not None:
             weather_preset_node.set('Value', value)
         else:
-            print(f'No information in METAR for {weather_preset_node.tag}. Will not update this tag.')
+            M.send_message(f'No information in METAR for {weather_preset_node.tag}. Will not update this tag.')
 
     def _set_pressure(self, value):
         tag = self.weather_preset.find('MSLPressure')
@@ -48,6 +48,8 @@ class MsfsXML:
     def _set_wind_speed(self, value):
         tag = self.ground_wind_layer.find('WindLayerSpeed')
         self._set_value(tag, value)
+
+    # TODO Set GustWave information
 
     def _set_cloud_layers(self, value):
         cloud_layers = self.weather_preset.findall('CloudLayer')
@@ -77,10 +79,10 @@ class MsfsXML:
         try:
             self.tree.write(self.preset_file_location, encoding='UTF-8', xml_declaration=True)
         except FileNotFoundError:
-            print(f'Error, could not create or update weather preset at {self.preset_file_location}.')
+            M.send_message(f'Error, could not create or update weather preset at {self.preset_file_location}.')
         except Exception as exp:
-            print(exp)
+            M.send_message(exp)
         else:
-            print(f'Weather preset successfully created at {self.preset_file_location}')
-            print('The following METAR was used to update it:')
-            print(airport.weather.code)
+            M.send_message(f'Weather preset successfully created at {self.preset_file_location}')
+            M.send_message('The following METAR was used to update it:')
+            M.send_message(airport.weather.code)

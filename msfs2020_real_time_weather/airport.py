@@ -5,24 +5,25 @@ import csv
 import random
 import urllib.request
 from metar import Metar
+from .messages import Messages as M
 
 
 class Airport:
     def __init__(self, icao_code_or_metar):
         # This is basically constructor overloading.
         if len(icao_code_or_metar) == 4:
-            print(f'Downloading latest METAR for airport: {icao_code_or_metar}')
+            M.send_message(f'Downloading latest METAR for airport: {icao_code_or_metar}')
             icao_code = icao_code_or_metar
             self.info = _Info(icao_code)
             self.weather = _Weather(icao_code, self.info.altitude)
         elif len(icao_code_or_metar) > 4:
-            print(f'Processing custom METAR: {icao_code_or_metar}')
+            M.send_message(f'Processing custom METAR: {icao_code_or_metar}')
             icao_code = icao_code_or_metar[:4]
             metar = icao_code_or_metar
             self.info = _Info(icao_code)
             self.weather = _Weather(icao_code, self.info.altitude, specific_metar=metar)
         else:
-            print('Invalid ICAO code or METAR.')
+            M.send_message('Invalid ICAO code or METAR.')
             exit(1)
 
 
@@ -48,8 +49,8 @@ class _Info:
     def _get_airport_info(self):
         airport_file_header = ('Airport ID', 'Name', 'City', 'Country', 'IATA', 'ICAO', 'Latitude',
                                'Longitude', 'Altitude', 'Timezone', 'DST', 'Tz database time zone', 'Type', 'Source')
-        with open('msfs2020_real_time_weather/airports.dat', newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile, airport_file_header)
+        with open('msfs2020_real_time_weather/airports.dat', newline='', encoding='utf-8') as csv_file:
+            reader = csv.DictReader(csv_file, airport_file_header)
             for row in reader:
                 if row['ICAO'] == self.station_id:
                     return row
@@ -61,15 +62,15 @@ class _Weather:
         self.station_id = station_id
         self.station_altitude = station_altitude
         try:
-            print('Parsing METAR.')
+            M.send_message('Parsing METAR.')
             if specific_metar is None:
                 self.parsed_metar = Metar.Metar(self._download_metar())
             else:
                 self.parsed_metar = Metar.Metar(specific_metar)
         except Exception as exp:
-            print(exp)
+            M.send_message(exp)
         else:
-            print('Metar successfully parsed.')
+            M.send_message('Metar successfully parsed.')
         self.code = self._get_metar_code()
         self.pressure = self._get_pressure()
         self.msl_temperature = self._get_msl_temperature()
@@ -78,14 +79,14 @@ class _Weather:
         self.cloud_layers = self._get_cloud_layers()
 
     def _download_metar(self):
-        url = f'https://tgftp.nws.noaa.gov/data/observations/metar/stations/{self.station_id}.TXT'
+        URL = f'https://tgftp.nws.noaa.gov/data/observations/metar/stations/{self.station_id}.TXT'
         try:
-            with urllib.request.urlopen(url) as f:
+            with urllib.request.urlopen(URL) as f:
                 extracted_metar = f.read().decode('utf-8')
                 extracted_metar = extracted_metar.split('\n', 1)[1]
                 return extracted_metar
         except urllib.error.URLError as e:
-            print(e.reason)
+            M.send_message(e.reason)
 
     def _get_metar_code(self):
         return self.parsed_metar.code
@@ -105,6 +106,8 @@ class _Weather:
 
     def _get_wind_speed(self):
         return str(round(self.parsed_metar.wind_speed.value('KT'), 3)) if self.parsed_metar.wind_speed else None
+
+    # TODO Parse wind gust information
 
     # TODO Airports with no cloud data won't get clouds in-game.
     # TODO Airports that have the first layer as OVC and no other layers, won't have clouds above said OVC layer.

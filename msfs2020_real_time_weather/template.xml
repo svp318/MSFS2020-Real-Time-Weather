@@ -1,61 +1,71 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <SimBase.Document Type="WeatherPreset" version="1,3">
     <Descr>AceXML Document</Descr>
     <WeatherPreset.Preset>
         <Name>Custom Sky</Name>
-        <Image>weather/presets/clear_sky.jpg</Image>
-        <Icon>weather/presets/clear_sky.svg</Icon>
-        <LayeredImage>weather/presets/clear_sky_layer.png</LayeredImage>
+        <Image>weather/presets/broken_clouds.jpg</Image>
+        <Icon>weather/presets/broken_clouds.svg</Icon>
+        <LayeredImage>weather/presets/broken_clouds_layer.png</LayeredImage>
         <IsAltitudeAMGL>True</IsAltitudeAMGL>
         <CloudLayer>
-            <CloudLayerDensity Value="0.202" Unit="(0 - 1)">
+            <CloudLayerDensity Value="0.350" Unit="(0 - 1)">
             </CloudLayerDensity>
-            <CloudLayerAltitudeBot Value="487.680" Unit="m">
+            <CloudLayerAltitudeBot Value="1410.262" Unit="m">
             </CloudLayerAltitudeBot>
-            <CloudLayerAltitudeTop Value="3817.000" Unit="m">
+            <CloudLayerAltitudeTop Value="3410.262" Unit="m">
             </CloudLayerAltitudeTop>
-            <CloudLayerScattering Value="1.000" Unit="(0 - 1)">
+            <CloudLayerScattering Value="0.900" Unit="(0 - 1)">
             </CloudLayerScattering>
         </CloudLayer>
         <CloudLayer>
-            <CloudLayerDensity Value="0.309" Unit="(0 - 1)">
+            <CloudLayerDensity Value="0.350" Unit="(0 - 1)">
             </CloudLayerDensity>
-            <CloudLayerAltitudeBot Value="548.640" Unit="m">
+            <CloudLayerAltitudeBot Value="5530.896" Unit="m">
             </CloudLayerAltitudeBot>
-            <CloudLayerAltitudeTop Value="7175.000" Unit="m">
+            <CloudLayerAltitudeTop Value="10530.896" Unit="m">
             </CloudLayerAltitudeTop>
-            <CloudLayerScattering Value="1.000" Unit="(0 - 1)">
+            <CloudLayerScattering Value="0.350" Unit="(0 - 1)">
             </CloudLayerScattering>
         </CloudLayer>
         <CloudLayer>
-            <CloudLayerDensity Value="0.838" Unit="(0 - 1)">
+            <CloudLayerDensity Value="0.750" Unit="(0 - 1)">
             </CloudLayerDensity>
-            <CloudLayerAltitudeBot Value="9144.000" Unit="m">
+            <CloudLayerAltitudeBot Value="13144.543" Unit="m">
             </CloudLayerAltitudeBot>
-            <CloudLayerAltitudeTop Value="9425.000" Unit="m">
+            <CloudLayerAltitudeTop Value="13394.543" Unit="m">
             </CloudLayerAltitudeTop>
-            <CloudLayerScattering Value="1.000" Unit="(0 - 1)">
+            <CloudLayerScattering Value="0.500" Unit="(0 - 1)">
             </CloudLayerScattering>
         </CloudLayer>
         <WindLayer>
             <WindLayerAltitude Value="0.000" Unit="m">
             </WindLayerAltitude>
-            <WindLayerAngle Value="230.0" Unit="degrees">
+            <WindLayerAngle Value="270.000" Unit="degrees">
             </WindLayerAngle>
-            <WindLayerSpeed Value="6.0" Unit="knts">
+            <WindLayerSpeed Value="6.540" Unit="knts">
             </WindLayerSpeed>
+            <GustWave>
+                <GustWaveInterval Value="19.910" Unit="sec">
+                </GustWaveInterval>
+                <GustWaveDuration Value="0.000" Unit="sec">
+                </GustWaveDuration>
+                <GustWaveSpeed Value="7.947" Unit="knts">
+                </GustWaveSpeed>
+                <GustAngle Value="524.838" Unit="degrees">
+                </GustAngle>
+            </GustWave>
         </WindLayer>
-        <MSLPressure Value="101100.000" Unit="pa">
+        <MSLPressure Value="95725.000" Unit="pa">
         </MSLPressure>
-        <MSLTemperature Value="303.28" Unit="k">
+        <MSLTemperature Value="255.650" Unit="k">
         </MSLTemperature>
-        <AerosolDensity Value="1.000" Unit="m">
+        <AerosolDensity Value="18.300" Unit="m">
         </AerosolDensity>
-        <Precipitations Value="0.000" Unit="mm/h">
+        <Precipitations Value="6.200" Unit="mm/h">
         </Precipitations>
-        <SnowCover Value="0.000" Unit="m">
+        <SnowCover Value="0.319" Unit="m">
         </SnowCover>
-        <ThunderstormIntensity Value="0.000" Unit="(0 - 1)">
+        <ThunderstormIntensity Value="0.460" Unit="(0 - 1)">
         </ThunderstormIntensity>
     </WeatherPreset.Preset>
 </SimBase.Document>

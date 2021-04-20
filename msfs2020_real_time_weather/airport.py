@@ -77,6 +77,8 @@ class _Weather:
         self.wind_dir = self._get_wind_dir()
         self.wind_speed = self._get_wind_speed()
         self.cloud_layers = self._get_cloud_layers()
+        self.precipitation = self._get_precipitation()
+        self.thunderstorm_intensity = self._get_thunderstorm_intensity()
 
     def _download_metar(self):
         URL = f'https://tgftp.nws.noaa.gov/data/observations/metar/stations/{self.station_id}.TXT'
@@ -108,6 +110,57 @@ class _Weather:
         return str(round(self.parsed_metar.wind_speed.value('KT'), 3)) if self.parsed_metar.wind_speed else None
 
     # TODO Parse wind gust information
+
+    def _get_precipitation(self):
+        weather = self.parsed_metar.weather
+        intensity = None
+        precipitation = None
+        if len(weather) > 0:
+            for row in weather:
+                if row[0] == '+' or row[0] == '-':
+                    intensity = row[0]
+                if row[2] != '"':
+                    precipitation = row[2]
+        else:
+            return '0.000'
+        amount = 0
+        if precipitation == 'DZ':
+            if intensity == '-':
+                amount = random.uniform(0.001, 0.334)
+            if intensity is None:
+                amount = random.uniform(0.335, 0.667)
+            if intensity == '+':
+                amount = random.uniform(0.667, 1)
+        else:
+            if intensity == '-':
+                amount = random.uniform(1, 4)
+            if intensity is None:
+                amount = random.uniform(4, 7)
+            if intensity == '+':
+                amount = random.uniform(7, 10)
+        return f'{round(amount, 3):.3f}' if self.parsed_metar.weather else None
+
+    def _get_thunderstorm_intensity(self):
+        weather = self.parsed_metar.weather
+        intensity = None
+        description = None
+        if len(weather) > 0:
+            for row in weather:
+                if row[0] == '+' or row[0] == '-':
+                    intensity = row[0]
+                if row[1] == 'TS':
+                    description = row[1]
+        else:
+            return '0.000'
+        amount = 0
+        if description == 'TS':
+            if intensity == '-':
+                amount = random.uniform(0.001, 0.334)
+            if intensity is None:
+                amount = random.uniform(0.335, 0.667)
+            if intensity == '+':
+                amount = random.uniform(0.667, 1)
+        return f'{round(amount, 3):.3f}' if self.parsed_metar.weather else None
 
     # TODO Airports with no cloud data won't get clouds in-game.
     # TODO Airports that have the first layer as OVC and no other layers, won't have clouds above said OVC layer.

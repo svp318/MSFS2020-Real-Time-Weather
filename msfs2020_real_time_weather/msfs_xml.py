@@ -51,6 +51,14 @@ class MsfsXML:
 
     # TODO Set GustWave information
 
+    def _set_precipitation(self, value):
+        tag = self.weather_preset.find('Precipitations')
+        self._set_value(tag, value)
+
+    def _set_thunderstorm_intensity(self, value):
+        tag = self.weather_preset.find('ThunderstormIntensity')
+        self._set_value(tag, value)
+
     def _set_cloud_layers(self, value):
         cloud_layers = self.weather_preset.findall('CloudLayer')
         for i, cloud_layer in enumerate(cloud_layers):
@@ -63,17 +71,15 @@ class MsfsXML:
             self._set_value(cloud_layer_altitude_top, value[i]['CloudLayerAltitudeTop'])
             self._set_value(cloud_layer_scattering, value[i]['CloudLayerScattering'])
 
-    # TODO Precipitation
-
-    # TODO Lightning
-
     def set_real_weather(self, airport):
         self._set_preset_name(airport.info.station_id)
         self._set_pressure(airport.weather.pressure)
         self._set_msl_temperature(airport.weather.msl_temperature)
         self._set_wind_dir(airport.weather.wind_dir)
         self._set_wind_speed(airport.weather.wind_speed)
+        self._set_precipitation(airport.weather.precipitation)
         self._set_cloud_layers(airport.weather.cloud_layers)
+        self._set_thunderstorm_intensity(airport.weather.thunderstorm_intensity)
 
     def save_file(self, airport):
         try:

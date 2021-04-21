@@ -49,7 +49,7 @@ Select the airport for the METAR you downloaded, pick your airplane and fly!
 - Please remember this is a personal project built so far only by myself. It is far from perfect. And if you have used Hi-Fi Simulation's Active Sky before, do not expect this to be even remotely close to the fantastic software they make.
 - The biggest caveat with this program is that once a weather preset is created and MSFS is started, the preset can't be updated. In other words, it can be updated, but MSFS won't detect the changes. Or if a new preset is created while MSFS is running, it won't be detected. In summary, any changes to the weather preset require a restart of MSFS for them to work. I have sadly not found a workaround to this.
 - Wind data is only for the surface. Once you start climbing, you'll notice the wind stays the same all the way up. I guess what can be done is switching the weather to "Live" once you're far enough from the airport.
-- Precipitation and lightning are not included in the preset yet. They will be in the future.
+- Wind gusts are not included in the preset yet. They will be in the future.
 - Cloud "thickness" (how tall they are) is determined on an algorithm that is too simple at this time, which means that an overcast sky might be so thin that you can still see the sky. Or that very high cirrus clouds might look more like cumulus. 
 - The program crashes if a wrong ICAO code or METAR is input. I need to work on error handling so this doesn't happen.
 

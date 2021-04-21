@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='msfs-2020-real-time-weather',
-    version='0.1',
+    version='0.2',
     install_requires=['metar'],
     url='https://github.com/svp318/MSFS2020-Real-Time-Weather',
     license='',
